@@ -187,7 +187,71 @@ app.get("/api/v1/tips", async (req, res) => {
     res.send(result)
 })
 //tips api ends-------
+//Comment 
 
+
+app.post("/api/v1/comments", async (req, res) => {
+    const comment = req.body;
+    const result = await addComment(comment);
+    res.send(result);
+})
+
+app.get("/api/v1/comments/:blogId", async (req, res) => {
+    const blogId = req.params.blogId;
+    const result = await getComment(blogId);
+    res.send(result)
+})
+
+
+//user api's
+
+app.post("/api/v1/users", async(req,res)=>{
+    const data = req.body;
+    console.log(data);
+    const result = await addUser(data);
+    res.send(result);
+})
+
+app.get("/api/v1/users", async(req,res)=>{
+    const result = await getAllUser();
+    res.send(result);
+})
+
+app.get("/api/v1/users/:email", async(req,res)=>{
+    const result = await getSingleUser(req.params.email);
+    res.send(result);
+})
+
+//*********   All APi's Ends here   ************************//
+
+
+
+//*********   Teams APi's start here   ************************//
+
+app.get("/api/v1/teams", async (req, res) => {
+    const result = await getTeamsData()
+    res.send(result)
+})
+
+//*********   Teams APi's Ends here   ************************//
+
+//*********   Experts APi's start here   ************************//
+
+app.get("/api/v1/experts", async (req, res) => {
+    const result = await getExpertsData()
+    res.send(result)
+})
+
+//*********   Experts APi's Ends here   ************************//
+
+
+//*********   Services api's start here   ************************//
+app.get("/api/v1/services", async (req, res) => {
+    const result = await getServicesData()
+    res.send(result)
+ })
+ //*********   Services api's ends here   ************************//
+ 
 
  
    
