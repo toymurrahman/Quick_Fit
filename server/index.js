@@ -174,35 +174,6 @@ app.get("/api/v1/books/:id", async (req, res) => {
 
 
 
-// cart api's starts--------
-app.get("/api/v1/cart/:id", async (req, res) => {
-    const id = req.params.id
-    const result = await getCartData(id)
-    res.send(result)
-})
-
-app.get("/api/v1/cart", async (req, res) => {
-    const id = req.params.id
-    const result = await getCartAllData()
-    res.send(result)
-})
-
-app.post("/api/v1/cart", async (req, res) => {
-    const sendProduct = req.body
-    const result = await postCartData(sendProduct);
-    res.send(result)
-})
-
-app.delete("/api/v1/cart/:id", async(req, res)=>{
-    const id = req.params.id ;
-    const result = await deleteCartData(id)
-    res.send(result)
-})
-
-// cart api's ends--------
-
-
-
 
 //tips api starts-------
 app.get("/api/v1/tips", async (req, res) => {
@@ -244,6 +215,34 @@ app.get("/api/v1/users/:email", async(req,res)=>{
     const result = await getSingleUser(req.params.email);
     res.send(result);
 })
+
+
+// cart api's starts--------
+app.get("/api/v1/cart/:id", async (req, res) => {
+    const id = req.params.id
+    const result = await getCartData(id)
+    res.send(result)
+})
+
+app.get("/api/v1/cart", async (req, res) => {
+    const id = req.params.id
+    const result = await getCartAllData()
+    res.send(result)
+})
+
+app.post("/api/v1/cart", async (req, res) => {
+    const sendProduct = req.body
+    const result = await postCartData(sendProduct);
+    res.send(result)
+})
+
+app.delete("/api/v1/cart/:id", async(req, res)=>{
+    const id = req.params.id ;
+    const result = await deleteCartData(id)
+    res.send(result)
+})
+
+// cart api's ends--------
 
 //*********   All APi's Ends here   ************************//
 
